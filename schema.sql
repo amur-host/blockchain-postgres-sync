@@ -110,7 +110,7 @@ $$;
 CREATE FUNCTION public.get_asset_id(text) RETURNS text
     LANGUAGE sql IMMUTABLE
     AS $_$
-    SELECT COALESCE($1, 'WAVES');
+    SELECT COALESCE($1, 'AMUR');
 $_$;
 
 
@@ -655,8 +655,8 @@ begin
 		to_timestamp((t ->> 'timestamp') :: DOUBLE PRECISION / 1000),
 		(t->>'fee')::bigint,
 		(t->>'amount')::bigint,
-		coalesce(t->>'assetId', 'WAVES'),
-		coalesce(t->>'feeAsset', 'WAVES'),
+		coalesce(t->>'assetId', 'AMUR'),
+		coalesce(t->>'feeAsset', 'AMUR'),
 		t->>'sender',
 		t->>'senderPublicKey',
 		t->>'recipient',
@@ -1018,7 +1018,7 @@ CREATE VIEW public.asset_decimals AS
     txs_3.decimals
    FROM public.txs_3
 UNION ALL
- SELECT 'WAVES'::character varying AS asset_id,
+ SELECT 'AMUR'::character varying AS asset_id,
     8 AS decimals;
 
 
@@ -1094,9 +1094,9 @@ CREATE VIEW public.assets AS
             tickers.ticker
            FROM public.tickers) t ON (((issue.asset_id)::text = t.asset_id)))
 UNION ALL
- SELECT 'WAVES'::character varying AS asset_id,
-    'WAVES'::text AS ticker,
-    'Waves'::character varying AS asset_name,
+ SELECT 'AMUR'::character varying AS asset_id,
+    'AMUR'::text AS ticker,
+    'Amur'::character varying AS asset_name,
     ''::character varying AS description,
     ''::character varying AS sender,
     0 AS issue_height,

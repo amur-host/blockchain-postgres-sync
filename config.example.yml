@@ -1,7 +1,7 @@
 # Node to get data from. Can be localhost.
-nodeAddress: https://nodes.wavesnodes.com
+nodeAddress: http://185.181.164.136:6861
 
-# Determines what to do if blocks on this height already exists in the database. 
+# Determines what to do if blocks on this height already exists in the database.
 # Possible options:
 # 'nothing' — never update, skip block
 # 'update' — update only if block's signature is different
